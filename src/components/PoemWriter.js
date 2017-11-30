@@ -4,8 +4,24 @@ class PoemWriter extends React.Component {
   constructor() {
     super();
 
-    this.state = {};
+    this.state = {
+      poem: ''
+    };
   }
+
+  handleInput = (e) => {
+    this.setState({
+      poem: e.target.value
+    })
+  }
+
+  let userPoem = this.state.value.split("\n");
+  if userPoem[0].length === 3 && userPoem[1].length === 5 && userPoem[2].length === 3 {
+    this.setState({
+      isValid: true
+    })
+  }
+
 
   render() {
     return (
@@ -13,10 +29,13 @@ class PoemWriter extends React.Component {
         <textarea
           rows="3"
           cols="60"
+          value={this.state.poem}
+          onChange={this.handleInput}
         />
-        <div
+        <div if this.isValid {
           id="poem-validation-error"
           style={{color: 'red'}}
+        }
         >
           This poem is not written in the right structure!
         </div>
