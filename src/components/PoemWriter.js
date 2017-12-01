@@ -13,13 +13,17 @@ class PoemWriter extends React.Component {
     this.setState({
       poem: e.target.value
     })
-  }
-
-  let userPoem = this.state.value.split("\n");
-  if userPoem[0].length === 3 && userPoem[1].length === 5 && userPoem[2].length === 3 {
-    this.setState({
-      isValid: true
-    })
+    let userPoem = this.state.poem.split("\n")
+    console.log(userPoem)
+    if (userPoem.length > 2 && userPoem[0].length === 5 && userPoem[1].length === 3 && userPoem[2].length === 5) {
+      this.setState({
+        isValid: true
+      })
+    } else {
+      this.setState({
+        isValid: false
+      })
+    }
   }
 
   render() {
@@ -31,13 +35,18 @@ class PoemWriter extends React.Component {
           value={this.state.poem}
           onChange={this.handleInput}
         />
-        <div if this.state.isValid {
-          id="poem-validation-error"
-          style={{color: 'red'}}
+        { !this.state.isValid ?
+          <div
+            id="poem-validation-error"
+            style={{color: 'red'}}
+          >
+            This poem is not written in the right structure!
+
+          </div>
+          : ""
         }
-        >
-          This poem is not written in the right structure!
-        </div>
+
+
       </div>
     );
   }
