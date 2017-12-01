@@ -22,7 +22,6 @@ class PoemWriter extends React.Component {
     })
   }
 
-
   render() {
     return (
       <div>
@@ -32,7 +31,7 @@ class PoemWriter extends React.Component {
           value={this.state.poem}
           onChange={this.handleInput}
         />
-        <div if this.isValid {
+        <div if this.state.isValid {
           id="poem-validation-error"
           style={{color: 'red'}}
         }
